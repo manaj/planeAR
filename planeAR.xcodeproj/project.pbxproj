@@ -35,16 +35,6 @@
 			path = planeAR;
 			sourceTree = "<group>";
 		};
-		A8A976D52FB359C7000314E4 /* planeARTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = planeARTests;
-			sourceTree = "<group>";
-		};
-		A8A976DF2FB359C7000314E4 /* planeARUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = planeARUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				A8A976C52FB359C5000314E4 /* planeAR */,
-				A8A976D52FB359C7000314E4 /* planeARTests */,
-				A8A976DF2FB359C7000314E4 /* planeARUITests */,
 				A8A976C42FB359C5000314E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				A8A976D42FB359C7000314E4 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				A8A976D52FB359C7000314E4 /* planeARTests */,
-			);
 			name = planeARTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				A8A976DE2FB359C7000314E4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A8A976DF2FB359C7000314E4 /* planeARUITests */,
 			);
 			name = planeARUITests;
 			packageProductDependencies = (
@@ -388,12 +370,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PQ3JSSK4U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Hey we are using your camera! ";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -430,12 +415,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PQ3JSSK4U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Hey we are using your camera! ";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
