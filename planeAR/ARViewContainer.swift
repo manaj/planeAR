@@ -2,33 +2,45 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct ARViewContainer : UIViewRepresentable {
+struct ARViewContainer: UIViewRepresentable {
     @Binding var modelName: String
-    
+    @ObservedObject var cameraManager: ARCameraManager
+
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
-        
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal,.vertical]
-        config.environmentTexturing = .automatic
-        
-        arView.session.run(config)
+        cameraManager.setup(arView: arView)
+        cameraManager.placeModel(named: modelName)
+
+        let pinch = UIPinchGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(Coordinator.handlePinch(_:))
+        )
+        arView.addGestureRecognizer(pinch)
+
         return arView
     }
-    
-    
-    func updateUIView(_ uiView: ARView, context: Context) {
-        let anchorEntity = AnchorEntity(world: [0, -1, -1])
 
-        guard let modelEntity = try? Entity.loadModel(named: modelName) else { return }
+    func updateUIView(_ uiView: ARView, context: Context) {}
 
-        modelEntity.setScale(SIMD3<Float>(0.01, 0.01, 0.01), relativeTo: nil)
+    func makeCoordinator() -> Coordinator {
+        Coordinator(cameraManager: cameraManager)
+    }
 
-        modelEntity.availableAnimations.forEach { animation in
-            modelEntity.playAnimation(animation.repeat())
+    class Coordinator: NSObject {
+        var cameraManager: ARCameraManager
+        var currentScale: Float = 0.01
+
+        init(cameraManager: ARCameraManager) {
+            self.cameraManager = cameraManager
         }
 
-        anchorEntity.addChild(modelEntity)
-        uiView.scene.addAnchor(anchorEntity)
+        @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
+            if sender.state == .changed {
+                let newScale = currentScale * Float(sender.scale)
+                cameraManager.updateZoom(newScale)
+                currentScale = newScale
+                sender.scale = 1
+            }
+        }
     }
 }
